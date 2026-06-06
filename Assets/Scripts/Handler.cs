@@ -45,8 +45,6 @@ public class Handler : MonoBehaviour
             createdCubes.Add(child.GetComponent<Rigidbody>());
         }
 
-        _exploder.Explode(cube);
-
         Destroy(cube.gameObject);
     }
 }

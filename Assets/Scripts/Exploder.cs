@@ -1,13 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
-    [SerializeField] private float _baseExplosionForce = 5f;
-    [SerializeField] private float _baseExplosionRadius = 2f;
+    [SerializeField] private float _baseExplosionForce = 500f;
+    [SerializeField] private float _baseExplosionRadius = 10f;
     
     public void Explode(Cube cube)
     {
+        Debug.Log("Boom");
+
         float multiplier = 1f / cube.Size;
 
         float force = _baseExplosionForce * multiplier;
@@ -20,7 +21,7 @@ public class Exploder : MonoBehaviour
         {
             Rigidbody cubeRigidbody = cubeCollider.GetComponent<Rigidbody>();
 
-            if (cubeRigidbody != null)
+            if (cubeRigidbody == null)
                 continue;
 
             cubeRigidbody.AddExplosionForce(force, cube.transform.position, radius);
